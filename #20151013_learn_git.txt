@@ -1,0 +1,18 @@
+#20151013_learn_git.txt
+
+Today we learned how to create a git directory and control your version locally.
+
+$ mkdir directoryname
+
+$ cd directoryname
+
+$ git init #make this directory a git folder
+
+$ subl filename #create a new file with sublimetext
+
+$ git status #check the current status
+
+$ git add filename #so that you can trace the changes of this file
+
+$ git commit -m "brief what you've done" #so that you create a new version of this git directory
+
