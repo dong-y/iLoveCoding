@@ -95,26 +95,14 @@
 import random
 
 inputnum = []
-inputnum1 = [413,324,31,565,768,45,768]
+inputnum1 = [3,2,1,4,2,3]
 inputnum2 = [1,2,3,4,5,6,7]
 # print(inputnum)
 
-for i in range(1000):
+for i in range(10000):
 	inputnum.append(random.uniform(1, 1000000000))
 
 print('haha')
-
-def minf(nums):
-	if len(nums) != 0:
-		minimum = nums[0]
-		for i in range(len(nums)):
-			if minimum < nums[i]:
-				continue 
-			else:
-				minimum = nums[i]
-		return minimum
-	else:
-		return "NULL"
 
 def minindexf(nums):
 	if len(nums) != 0:
@@ -123,8 +111,9 @@ def minindexf(nums):
 			if minimum < nums[i]:
 				continue 
 			else:
-				return i 
-				break
+				minimum = nums[i]
+				index = i
+		return index
 	else:
 		return "NULL"
 
@@ -143,45 +132,50 @@ def minindexf(nums):
 def sortf2(nums):
 	if len(nums) != 0:
 		for i in range(len(nums)):
-			print i
-			print nums
-			# numssub = nums[i:]
-			minimum = numssub[minindexf(numssub)]
-			numssub[minindexf(numssub)] = numssub[0]
-			numssub[0] = minimum
+			# print i
+			# print nums
+			mininum = nums[i+minindexf(nums[i:])]
+			# print mininum
+			nums[i+minindexf(nums[i:])] = nums[i]
+			nums[i] = mininum
+			# print nums
 		return nums
 	else:
 		return "NULL"
 
-# print(sortf2(inputnum1))
-# print(sortf2(inputnum2))
-# print(sortf2(inputnum))
+print(sortf2(inputnum1))
+print(sortf2(inputnum2))
+print(sortf2(inputnum))
 
-def getminindex(l,i):
-	if len(l)==i+1:
-		return i
-	else:
-		ni = getminindex(l,i+1)
-		if l[i]<l[ni]:
-			return i
-		else:
-			return ni
+#############################
+##### selection sort v4 #####
+#############################
 
-print(getminindex([1,3,2],0))
+# def getminindex(l,i):
+# 	if len(l)==i+1:
+# 		return i
+# 	else:
+# 		ni = getminindex(l,i+1)
+# 		if l[i]<l[ni]:
+# 			return i
+# 		else:
+# 			return ni
 
-def selection_sort(l):
-	def selection_sort_help(l,i):
-		if len(l)<=i+1:
-			return l
-		else:
-			m = getminindex(l,i)
-			tmp = l[i]
-			l[i] = l[m]
-			l[m] = tmp
-			return selection_sort_help(l,i+1)
-	return	selection_sort_help(l,0)
+# print(getminindex([1,3,2],0))
 
-print(selection_sort([1,3,2,7,9,10,5,13]))
+# def selection_sort(l):
+# 	def selection_sort_help(l,i):
+# 		if len(l)<=i+1:
+# 			return l
+# 		else:
+# 			m = getminindex(l,i)
+# 			tmp = l[i]
+# 			l[i] = l[m]
+# 			l[m] = tmp
+# 			return selection_sort_help(l,i+1)
+# 	return	selection_sort_help(l,0)
+
+# print(selection_sort([1,3,2,7,9,10,5,13]))
 
 
 
